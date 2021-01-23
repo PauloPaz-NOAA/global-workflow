@@ -5,18 +5,18 @@ if ! [ -x "$(command -v docker)" ]; then
   exit 1
 fi
 
-REPO=${REPO:-noaagsl}
+REPO=${REPO:-ppaznoaa}
 GERRIT_ID=${GERRIT_ID:-gerrit}
 SSH_CONFIG=${SSH_CONFIG:-${HOME}/.ssh/config}
 
 export DOCKER_BUILDKIT=1
 
-INTEL_COMP_DIR=/data/intel
+INTEL_COMP_DIR=/vol1/intel
 COMP=${COMP:-intel}
 
 #loads intel compiler from host and builds image with it
 build_image() {
-    docker build --ssh default --secret id=${GERRIT_ID},src=${SSH_CONFIG} \
+    docker build \
                  --build-arg REPO=${REPO} \
                  --build-arg GERRIT_ID=${GERRIT_ID} \
                  -t ${1} -f ${2} .
