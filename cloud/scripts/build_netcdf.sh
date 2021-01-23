@@ -23,11 +23,11 @@ export CXXCOMP=mpiicpc
 export FCCOMP=mpiifort
 export F77COMP=mpiifort
 
-export CFLAGS='-O3 -xHost -ip -fpic'
-export CXXFLAGS='-O3 -xHost -ip -fpic'
-export FCFLAGS='-O3 -xHost -ip -fpic'
-export F77FLAGS='-O3 -xHost -ip -fpic'
-export LDFLAGS='-O3 -xHost -ip -fpic'
+export CFLAGS='-O3 -xHost -ip -fpic -shared'
+export CXXFLAGS='-O3 -xHost -ip -fpic -shared'
+export FCFLAGS='-O3 -xHost -ip -fpic -shared'
+export F77FLAGS='-O3 -xHost -ip -fpic -shared'
+export LDFLAGS='-O3 -xHost -ip -fpic -shared'
 
 else
 
@@ -65,6 +65,8 @@ PP=zlib-1.2.11
 
 #szip-2.1.1.tar.gz
 PP=szip-2.1.1
+    export LDFLAGS='-O3 -xHost -fpic -ip'
+    export CFLAGS='-O3 -xHost -fpic -ip'
     cd $SRC_DIR && wget --no-check-certificate https://support.hdfgroup.org/ftp/lib-external/szip/2.1.1/src/$PP.tar.gz && \
     tar -xvf $PP.tar.gz && \
     cd $PP && \
@@ -73,6 +75,12 @@ PP=szip-2.1.1
     make install 2>&1 | tee log.install && \
     cd .. && \
     rm -fr $PP $PP.tar.gz
+    
+export CFLAGS='-O3 -xHost -fpic -ip'
+export LDFLAGS='-O3 -xHost -fpic -ip'
+export CXXFLAGS='-O3 -xHost -fpic -ip'
+export FCFLAGS='-O3 -xHost -fpic -ip'
+export F77FLAGS='-O3 -xHost -fpic -ip'
 
 #hdf5-1.8.21.tar.gz
 PP=hdf5-1.8.21
