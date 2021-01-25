@@ -2,9 +2,10 @@ ARG REPO
 FROM ${REPO}/esmf-intel:latest
 MAINTAINER Daniel Abdi <daniel.abdi@noaa.gov>
 
+
 RUN dnf update -y && \
-    dnf --enablerepo=PowerTools install -y lapack-devel && \
-    dnf install -y --enablerepo=PowerTools \
+    dnf --enablerepo=powertools install -y lapack-devel && \
+    dnf install -y --enablerepo=powertools \
         redhat-lsb-core \
         curl-devel \
         blas-devel \

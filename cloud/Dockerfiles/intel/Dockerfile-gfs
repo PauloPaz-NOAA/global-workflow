@@ -25,11 +25,7 @@ RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan  -p 29418 -t rsa vlab.ncep.noaa.gov >
 # clone gfs by mounting ssh and secret ssh config file
 ARG GERRIT_ID
 COPY ./scripts/checkout_gfs.sh /opt/checkout_gfs.sh
-RUN --mount=type=ssh,id=default \
-    --mount=type=secret,id=gerrit,dst=/root/.ssh/config \
-    cat /root/.ssh/config \
-    && ssh-add -L \
-    && cd /opt && ./checkout_gfs.sh
+RUN cd /opt && ./checkout_gfs.sh
 
 # global-workflow
 COPY ./patch_gfs.sh /opt/patch_gfs.sh

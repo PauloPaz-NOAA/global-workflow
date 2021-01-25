@@ -16,6 +16,8 @@ COMP=${COMP:-intel}
 
 #loads intel compiler from host and builds image with it
 build_image() {
+
+    [ -z $(docker images -q ${1}) ] || return 1
     docker build \
                  --build-arg REPO=${REPO} \
                  --build-arg GERRIT_ID=${GERRIT_ID} \

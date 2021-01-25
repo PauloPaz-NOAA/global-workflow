@@ -8,7 +8,8 @@ CWD=${PWD}
 cd ${GFSDIR}
 patch -p0 -i ${CWD}/patches/workflow/GFS.diff
 cd -
-
+ls global-workflow/sorc
+cat global-workflow/sorc/checkout.sh
 cd ${GFSDIR}/sorc/gsi.fd
 if [ -d /opt/intel ]; then
 patch -p0 -i ${CWD}/patches/workflow/GSI-intel.diff
