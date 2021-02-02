@@ -49,3 +49,9 @@ Though, currently this breaks down when building HDF5 (will be installed in loca
 
 Also the Intel build does not work properly with OpenMP -- I suspect it is because of Intel 19.0 version that is probably
 untested. You can turn off OpenMP in conf/configure.fv3.linux.intel or don't use threads in your forecasts.
+
+
+### Intel GSI
+
+Currently, building the GSI component breaks down due to missing WRF dependencies. The fix is to clone the WRF repo (https://github.com/wrf-model/WRF) and configure, build, and compile this dependency before adding the ${WRFPATH} to your environment. See: GSI/cmake/Modules/FindWRF.cmake to find the missing libraries.
+
