@@ -56,3 +56,8 @@ untested. You can turn off OpenMP in conf/configure.fv3.linux.intel or don't use
 # 
 Currently, building the GSI component breaks down due to missing WRF dependencies. The fix is to clone the WRF repo (https://github.com/wrf-model/WRF) and configure, build, and compile this dependency before adding the ${WRFPATH} to your environment. See: GSI/cmake/Modules/FindWRF.cmake to find the missing libraries.
 
+# 
+    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/vol1/intel/compilers_and_libraries_2020.2.254/linux/mpi/intel64/libfabric/lib/
+    export LANG=en_US.UTF-8
+
+
