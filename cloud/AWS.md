@@ -166,7 +166,11 @@ Note that singularity is installed in our home directory so that all compute nod
 	  cd ./builddir && \
 	  make && \
 	  make install
-
+	  
+    sudo apt-get -y install ruby-dev python-pip bc && \
+    pip install numpy && \
+    cd /opt && git clone https://github.com/christopherwharrop/rocoto.git && \
+    cd rocoto && bash ./INSTALL
 
     $ cp /NCEPPROD/install-ubuntu.sh .
     $ ./install-ubuntu.sh
